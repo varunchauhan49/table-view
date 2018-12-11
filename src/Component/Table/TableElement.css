@@ -1,0 +1,25 @@
+.Sort-header{
+  cursor:pointer;
+  margin-right: 10px;
+}
+.Sort-header:hover{
+  cursor:pointer;
+  color:gray;
+}
+
+.marginL{
+  margin-right: 10px;
+}
+
+thead{
+  font-size: 13px;
+}
+
+tbody{
+  font-size: 13px;
+}
+
+.Filter-input{
+  width: 100%;
+  outline: none;
+}

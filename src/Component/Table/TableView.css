@@ -1,0 +1,27 @@
+.Table-header {
+  color: black;
+  font-size: x-large;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+#Table-view .btn:focus, .btn:hover .page-link:focus {
+  text-decoration: none !important;
+  outline:none !important;
+  box-shadow : 0 0 0 0 blue !important;
+}
+
+.No-focus{
+  text-decoration: none !important;
+  outline:none !important;
+  box-shadow : 0 0 0 0 blue !important;
+}
+.No-focus:focus .No-focus:hover{
+  text-decoration: none !important;
+  outline:none !important;
+  box-shadow : 0 0 0 0 blue !important;
+}
+
+.Disabled-Mouse{
+  cursor: not-allowed !important;
+}
