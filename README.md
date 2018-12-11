@@ -2,7 +2,7 @@
 React table module to add a dynamic table on your react page.
 
 ## Installation
-- To install just git clone this repository and install dependencies using `yarn instal`
+- To install just git clone this repository and install dependencies using `yarn install`
 - To start the app use `yarn start` and to test this app use `yarn test`
 
 ## API Flow
