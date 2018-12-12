@@ -9,7 +9,7 @@ export function fetchCandidateInfo() {
       .then((resp) => (resp.json()))
       .then((response) => {
         if(response.error){
-          throw 'Unable to fetch data from web services';
+          throw 'Unable to fetch data from web services. Please try again';
         }
         dispatch({type: "FETCH_CANDIDATE_INFO_FULFILLED", payload: response.data})
       })
