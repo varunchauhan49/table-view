@@ -14,7 +14,6 @@ export function fetchCandidateInfo() {
         dispatch({type: "FETCH_CANDIDATE_INFO_FULFILLED", payload: response.data})
       })
       .catch((err) => {
-        console.log('Error',err);
         dispatch({type: "FETCH_CANDIDATE_INFO_REJECTED", payload: err})
       })
   }

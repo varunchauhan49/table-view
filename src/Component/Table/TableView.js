@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import TableElement from './TableElement';
+import propTypes from 'prop-types';
 import { Pagination, PaginationItem, PaginationLink,Row } from 'reactstrap';
 
 import './TableView.css'
 
+// Temp header data. When making this class modular this parameter can be passed to TableView Class
 let headers = [
   { id: 'name', label:'Name', type: 'string', filter:true, sort:false},
   { id: 'email', label:'Email', type: 'string', filter:false, sort:false},
@@ -13,6 +15,7 @@ let headers = [
   { id: 'application_date', label:'Date of application', type: 'date', filter:false, sort:true},
   { id: 'status', label:'Status of the application', type: 'string', filter:true, sort:false}
 ]
+
 
 class TableView extends Component{
   constructor(props){
@@ -31,6 +34,7 @@ class TableView extends Component{
     this.textChange = this.textChange.bind(this);
   }
 
+  // Function to send first x entries to Table Element module
   updateTableData(json,index){
     if(json.length === 0){
       return [];
@@ -43,6 +47,7 @@ class TableView extends Component{
     return indexedData;
   }
 
+  // Function to do sorting and it currently support data types string and date.
   sortByKey(array, key, order=true , type='string') {
     if(type === 'string'){
       return array.sort((a, b) => {
@@ -65,6 +70,7 @@ class TableView extends Component{
     }
   }
 
+  // Function to receive request for sorting data based on prop passed
   sortTableData(element){
     const {data,sort,sortState} = this.state;
     if(sort === element.id){
@@ -82,6 +88,7 @@ class TableView extends Component{
     }
   }
 
+  // Function to update step count used by pagination
   updateStepCount(flag){
     const { data,step } = this.state;
     let pageCount = Math.ceil(data.length/10);
@@ -102,6 +109,7 @@ class TableView extends Component{
     }
   }
 
+  // Function to filter data based on user input on filters
   textChange(element, text){
     const {data} = this.props;
     let {filter} = this.state;
@@ -174,6 +182,10 @@ class TableView extends Component{
       </div>
     )
   }
+}
+
+TableView.propTypes = {
+  data: propTypes.array
 }
 
 export default TableView;

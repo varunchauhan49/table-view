@@ -1,17 +1,14 @@
 import React from 'react'
-import {render, fireEvent, cleanup, waitForElement} from 'react-testing-library'
+import {render, cleanup} from 'react-testing-library'
 import CandidateApp from '../CandidateApp';
 import {createStore,applyMiddleware} from 'redux';
 import {Provider} from 'react-redux'
 import reducer from '../../Reducers'
 import promise from "redux-promise-middleware";
-import thunk from "redux-thunk"
-// import configureStore from 'redux-mock-store';
+import thunk from "redux-thunk";
 
 afterEach(cleanup);
 
-// const middlewares = [thunk]
-// const mockStore = configureStore(middlewares);
 
 const candidateData = [
   {
@@ -58,7 +55,6 @@ const candidateData = [
 
 describe('Table Element', () => {
   test('it renders table data', async () => {
-    // Arrange
 
     const mockCandidateFn = jest.fn();
     const props = {
@@ -71,51 +67,14 @@ describe('Table Element', () => {
 
     const middleware = applyMiddleware(  promise(),  thunk);
     const store = createStore(reducer, middleware)
-    // const store = mockStore({})
     const { getByText } = render(
       <Provider store={store}>
        <CandidateApp {...props} />
       </Provider>
     )
-    // const greetingTextNode = await waitForElement(() =>
-    //   getByText('Applications'),
-    // )
     const appNode = getByText('Applications');
 
     expect(appNode).toBeDefined();
 
   })
-
-  test('it renders table header', () => {
-    // Arrange
-    const mockCandidateFn = jest.fn();
-    const props = {
-      candidateInfoAction: mockCandidateFn,
-      candidateInfoData: candidateData,
-      candidateInfoError: null,
-      candidateInfoFetched: true,
-      candidateInfoFetching: false
-    }
-    
-    const middleware = applyMiddleware(  promise(),  thunk);
-    const store = createStore(reducer, middleware)
-    // const store = mockStore({})
- 
-    const { getByText } = render(
-      <Provider store={store}>
-       <CandidateApp {...props} />
-      </Provider>
-    )
-
-    // Check whether header nodes has been render properly.
-    // const headerName = getByText('Name');
-    // expect(headerName).toBeDefined();
-
-    // const headerEmail = getByText('Email');
-    // expect(headerEmail).toBeDefined();
-
-    // const headerAge = getByText('Age');
-    // expect(headerAge).toBeDefined();
-  })
-
 })

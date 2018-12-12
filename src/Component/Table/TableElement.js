@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import propTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import './TableElement.css';
 
@@ -12,6 +13,7 @@ class TableElement extends Component {
     }
   }
 
+  // React life cycle method to capture change in nextProps and prevState, this helps in setting new state.
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.sortElement !== prevState.sortSelected) {
       return {
@@ -99,6 +101,16 @@ class TableElement extends Component {
       </Table>
     )
   }
+}
+
+TableElement.propTypes = {
+  sortElement: propTypes.string,
+  sortData: propTypes.func,
+  asc: propTypes.bool,
+  filter: propTypes.object,
+  tableHeader: propTypes.array,
+  tableData: propTypes.array,
+  handleChange: propTypes.func
 }
 
 export default TableElement;

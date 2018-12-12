@@ -10,6 +10,7 @@ import { fetchCandidateInfo } from "../Actions/candidateDetails";
 
 import "./CandidateApp.css";
 
+// Mapping redux state with porps.
 const mapStateToProps = state => {
   return {
     candidateInfoData:state.candidateReducer.candidateInfoData,
@@ -19,6 +20,7 @@ const mapStateToProps = state => {
   }
 }
 
+// To dispatch actions from container component CandidateApp 
 const mapDispatchToProps = dispatch => {
   return {
     candidateInfoAction: bindActionCreators(fetchCandidateInfo, dispatch)
@@ -39,7 +41,6 @@ class CandidateApp extends Component{
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.candidateInfoFetched !== prevState.fetched && nextProps.candidateInfoFetched === true) {
-      console.log("State",(nextProps.candidateInfoError && nextProps.candidateInfoData.length === 0),nextProps.candidateInfoError,nextProps.candidateInfoData);
       return {
         modal: (nextProps.candidateInfoError !== prevState.error && nextProps.candidateInfoData.length === 0)?true:false,
         loader: false,
